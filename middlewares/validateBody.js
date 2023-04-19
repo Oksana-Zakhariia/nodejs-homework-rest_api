@@ -3,7 +3,6 @@ const { HttpError } = require("../helpers");
 const validateBody = (schema) => {
   const func = (req, res, next) => {
     const { error } = schema.validate(req.body);
-    console.log(error);
     if (error) {
       next(
         HttpError(
@@ -17,4 +16,15 @@ const validateBody = (schema) => {
   return func;
 };
 
+//  const validateForUpdate = (schema)=> {const func = (req, res, next) => {
+//    const { error } = schema.validate(req.body);
+//    if (error) {
+//      next(
+//        HttpError(400, `missing favorite field`)
+//      );
+//    }
+//    next();
+//  };
+//   return func;
+// }
 module.exports = validateBody;
